@@ -1,0 +1,502 @@
+{
+  "bootstrap": 500,
+  "seed": 2026,
+  "error_halfwidth_fraction": 5e-05,
+  "time": [
+    0.5,
+    1.0,
+    2.0,
+    2.5,
+    3.0,
+    4.0,
+    5.0,
+    6.0,
+    7.0,
+    8.0,
+    9.0,
+    10.0
+  ],
+  "fraction": [
+    0.0036,
+    0.0161,
+    0.0269,
+    0.0725,
+    0.1586,
+    0.1632,
+    0.1887,
+    0.4737,
+    0.609,
+    0.7301,
+    0.8055,
+    0.8714
+  ],
+  "warnings": [
+    "Korsmeyer-Peppas is invalid beyond first 60% release; excluded from full-curve scope.",
+    "All models assume zero baseline and known releasable total; do not normalize by last point.",
+    "Holdout is interleaved within one curve, not independent experimental replication.",
+    "Bootstrap intervals assume exchangeable residuals; cumulative errors may be correlated. Intervals are conditional on this curve and model, not biological confidence.",
+    "Do not extrapolate outside observed time range; no mechanism or clinical claims.",
+    "Source discrepancy: kinetics table gives 16.32% at 4 h, while the comparative F15 table gives 14.32%. Values here follow the kinetics table without silently reconciling them.",
+    "Medium pH changes during the experiment. The prose and comparative table also differ on timings. Single-regime fits describe this selected table only; they cannot establish a release mechanism.",
+    "No raw replicate curves or experimental uncertainty available in the selected table. Rounded cumulative points are not independent replicates."
+  ],
+  "scopes": [
+    {
+      "label": "First 60%",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "train_indices": [
+        0,
+        2,
+        3,
+        5,
+        6
+      ],
+      "test_indices": [
+        1,
+        4,
+        7
+      ],
+      "models": {
+        "zero_order": {
+          "parameters": {
+            "k": 0.05299743589760097
+          },
+          "ci95": [
+            [
+              0.04269037279521501,
+              0.07132517457089105
+            ]
+          ],
+          "bootstrap_success": 500,
+          "aic": -37.58983817280769,
+          "aicc": -35.18983817280769,
+          "sse": 0.04418860935897437,
+          "heldout_rmse_pp": 15.354909306863421,
+          "train_parameters": {
+            "k": 0.03559514563436002
+          },
+          "heldout_predictions": [
+            0.03559514563436002,
+            0.10678543690308005,
+            0.2135708738061601
+          ],
+          "residuals_pp": [
+            -2.2898717948800487,
+            -3.689743589760097,
+            -7.909487179520195,
+            -5.999358974400241,
+            -0.03923076928029068,
+            -4.878974359040386,
+            -7.628717948800482,
+            15.571538461439422
+          ],
+          "warnings": []
+        },
+        "first_order": {
+          "parameters": {
+            "k": 0.05887312897287924
+          },
+          "ci95": [
+            [
+              0.04515080259407528,
+              0.08344639817451054
+            ]
+          ],
+          "bootstrap_success": 500,
+          "aic": -36.418666655356574,
+          "aicc": -34.018666655356576,
+          "sse": 0.05115516622391525,
+          "heldout_rmse_pp": 15.849379388378878,
+          "train_parameters": {
+            "k": 0.038171166892292524
+          },
+          "heldout_predictions": [
+            0.037451829589034806,
+            0.10820010156541678,
+            0.20469294115206704
+          ],
+          "residuals_pp": [
+            -2.5407528906365444,
+            -4.1073621079477265,
+            -8.417841921161488,
+            -6.436383766182603,
+            -0.330128484097994,
+            -4.661842320867848,
+            -6.629596526412937,
+            17.61094563512003
+          ],
+          "warnings": []
+        },
+        "higuchi": {
+          "parameters": {
+            "k": 0.0981122113746055
+          },
+          "ci95": [
+            [
+              0.0688902089739702,
+              0.14789985827409272
+            ]
+          ],
+          "bootstrap_success": 500,
+          "aic": -32.168887591773164,
+          "aicc": -29.768887591773165,
+          "sse": 0.0870154658886233,
+          "heldout_rmse_pp": 18.632123713919103,
+          "train_parameters": {
+            "k": 0.0645404659145509
+          },
+          "heldout_predictions": [
+            0.0645404659145509,
+            0.11178736610816947,
+            0.15809120925213974
+          ],
+          "residuals_pp": [
+            -6.5775809980191475,
+            -8.20122113746055,
+            -11.185161996038296,
+            -8.262902710981649,
+            -1.1335334943753854,
+            -3.3024422749210998,
+            -3.0685574056446008,
+            23.33751445961288
+          ],
+          "warnings": [
+            "Higuchi requires sink conditions, constant diffusivity, negligible swelling/erosion and appropriate geometry; not established by fit."
+          ]
+        },
+        "korsmeyer_peppas": {
+          "parameters": {
+            "k": 0.006760784676730081,
+            "n": 2.3151262638273544
+          },
+          "ci95": [
+            [
+              0.0011724832823591486,
+              0.022986672885944814
+            ],
+            [
+              1.5662999100525097,
+              3.3525968449865253
+            ]
+          ],
+          "bootstrap_success": 500,
+          "aic": -43.60563536447539,
+          "aicc": -37.60563536447539,
+          "sse": 0.01622401253618867,
+          "heldout_rmse_pp": 12.54971139387136,
+          "train_parameters": {
+            "k": 0.01598730974644383,
+            "n": 1.5722981381064403
+          },
+          "heldout_predictions": [
+            0.01598730974644383,
+            0.08993986880651254,
+            0.26746142333152306
+          ],
+          "residuals_pp": [
+            0.2241453039292024,
+            0.9339215323269919,
+            -0.6744924148436117,
+            1.6100082348603204,
+            7.258126485791422,
+            -0.42333638889847647,
+            -9.197318249174987,
+            4.562930146687521
+          ],
+          "warnings": [
+            "Restricted to observed first 60% release; no mechanism inferred from exponent without geometry and independent evidence."
+          ]
+        },
+        "weibull": {
+          "parameters": {
+            "tau": 7.640066264175861,
+            "beta": 2.5668070177780113
+          },
+          "ci95": [
+            [
+              6.749019769045907,
+              10.023276661818503
+            ],
+            [
+              1.70180712328666,
+              3.801163437656465
+            ]
+          ],
+          "bootstrap_success": 500,
+          "aic": -42.56109883489238,
+          "aicc": -36.56109883489238,
+          "sse": 0.018486846261455338,
+          "heldout_rmse_pp": 12.812323607052376,
+          "train_parameters": {
+            "tau": 12.154232746622785,
+            "beta": 1.6843299434521473
+          },
+          "heldout_predictions": [
+            0.014781928840140922,
+            0.0904019377052462,
+            0.2625271375123974
+          ],
+          "residuals_pp": [
+            0.2687199417985378,
+            1.0703829113134125,
+            -0.4650274685726069,
+            1.7240117195629985,
+            7.18285019884498,
+            -0.9796845595770959,
+            -9.725342032445287,
+            5.772925533169094
+          ],
+          "warnings": []
+        }
+      },
+      "warnings": [
+        "Data cannot separate zero_order and first_order: delta AICc < 2; held-out errors unresolved by paired resampling or both <0.1 pp.",
+        "Data cannot separate zero_order and higuchi: held-out errors unresolved by paired resampling or both <0.1 pp.",
+        "Data cannot separate zero_order and korsmeyer_peppas: held-out errors unresolved by paired resampling or both <0.1 pp.",
+        "Data cannot separate zero_order and weibull: delta AICc < 2; held-out errors unresolved by paired resampling or both <0.1 pp.",
+        "Data cannot separate first_order and higuchi: held-out errors unresolved by paired resampling or both <0.1 pp.",
+        "Data cannot separate first_order and korsmeyer_peppas: held-out errors unresolved by paired resampling or both <0.1 pp.",
+        "Data cannot separate first_order and weibull: held-out errors unresolved by paired resampling or both <0.1 pp.",
+        "Data cannot separate higuchi and korsmeyer_peppas: held-out errors unresolved by paired resampling or both <0.1 pp.",
+        "Data cannot separate higuchi and weibull: held-out errors unresolved by paired resampling or both <0.1 pp.",
+        "Data cannot separate korsmeyer_peppas and weibull: delta AICc < 2; held-out errors unresolved by paired resampling or both <0.1 pp."
+      ]
+    },
+    {
+      "label": "Full curve",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "train_indices": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "test_indices": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "models": {
+        "zero_order": {
+          "parameters": {
+            "k": 0.079781736891447
+          },
+          "ci95": [
+            [
+              0.07070047027715243,
+              0.08958512901190058
+            ]
+          ],
+          "bootstrap_success": 500,
+          "aic": -49.56854664223292,
+          "aicc": -48.23521330889958,
+          "sse": 0.13818817941890166,
+          "heldout_rmse_pp": 7.099298575823852,
+          "train_parameters": {
+            "k": 0.07807542531938483
+          },
+          "heldout_predictions": [
+            0.07807542531938483,
+            0.23422627595815448,
+            0.46845255191630897,
+            0.7026788278744635
+          ],
+          "residuals_pp": [
+            -3.6290868445723503,
+            -6.3681736891447,
+            -13.2663473782894,
+            -12.695434222861751,
+            -8.074521067434102,
+            -15.592694756578801,
+            -21.020868445723504,
+            -0.4990421348681995,
+            5.052784175987091,
+            9.184610486842393,
+            8.746436797697699,
+            7.358263108552987
+          ],
+          "warnings": []
+        },
+        "first_order": {
+          "parameters": {
+            "k": 0.10809192699509343
+          },
+          "ci95": [
+            [
+              0.08159784040184033,
+              0.1497494425240087
+            ]
+          ],
+          "bootstrap_success": 500,
+          "aic": -41.37034769356971,
+          "aicc": -40.03701436023638,
+          "sse": 0.27363623667681247,
+          "heldout_rmse_pp": 12.06072078893891,
+          "train_parameters": {
+            "k": 0.10375583766734356
+          },
+          "heldout_predictions": [
+            0.09855463044235807,
+            0.26748210840389147,
+            0.4634175384915918,
+            0.6069437466284107
+          ],
+          "residuals_pp": [
+            -4.901143979072695,
+            -8.635491598460062,
+            -16.751282215978964,
+            -16.429592346291155,
+            -11.834918878367997,
+            -18.782929889944533,
+            -22.881953755717003,
+            -0.34975243994215255,
+            7.8238791886380055,
+            15.12629708869454,
+            18.351275408889865,
+            21.0683489127613
+          ],
+          "warnings": []
+        },
+        "higuchi": {
+          "parameters": {
+            "k": 0.19315687951148183
+          },
+          "ci95": [
+            [
+              0.14700230946267068,
+              0.2461048090120857
+            ]
+          ],
+          "bootstrap_success": 500,
+          "aic": -34.97710228717979,
+          "aicc": -33.643768953846454,
+          "sse": 0.4661791822588234,
+          "heldout_rmse_pp": 17.021386134731976,
+          "train_parameters": {
+            "k": 0.18808903756123013
+          },
+          "heldout_predictions": [
+            0.18808903756123013,
+            0.3257797694027815,
+            0.46072216823619305,
+            0.5642671126836905
+          ],
+          "residuals_pp": [
+            -13.298253933540172,
+            -17.70568795114818,
+            -24.626507867080342,
+            -23.290784249349716,
+            -17.595752914534643,
+            -22.311375902296366,
+            -24.321191290940977,
+            0.05642048886190798,
+            9.79549327913517,
+            18.37698426583931,
+            22.602936146555454,
+            26.05843150130056
+          ],
+          "warnings": [
+            "Higuchi requires sink conditions, constant diffusivity, negligible swelling/erosion and appropriate geometry; not established by fit."
+          ]
+        },
+        "weibull": {
+          "parameters": {
+            "tau": 7.38864419831499,
+            "beta": 2.6848176344572106
+          },
+          "ci95": [
+            [
+              7.143054687426201,
+              7.707637468313187
+            ],
+            [
+              2.3359858362363406,
+              3.1468765468944984
+            ]
+          ],
+          "bootstrap_success": 500,
+          "aic": -70.19771763291432,
+          "aicc": -67.19771763291432,
+          "sse": 0.020964952732459703,
+          "heldout_rmse_pp": 5.993764773324632,
+          "train_parameters": {
+            "tau": 7.427005798108502,
+            "beta": 3.019800074059005
+          },
+          "heldout_predictions": [
+            0.0023431884595870975,
+            0.06268252973364077,
+            0.40845781820953575,
+            0.832409723379154
+          ],
+          "residuals_pp": [
+            0.2876074047435053,
+            1.145429879940632,
+            -0.2597634862741571,
+            1.9451154452949087,
+            7.351012098486767,
+            -1.19249080379496,
+            -10.695336856138907,
+            3.8199429084338155,
+            3.0068286229694263,
+            2.008562604876607,
+            -1.1516197846086929,
+            -2.3581074653238887
+          ],
+          "warnings": []
+        }
+      },
+      "warnings": [
+        "Data cannot separate zero_order and weibull: held-out errors unresolved by paired resampling or both <0.1 pp.",
+        "Data cannot separate first_order and weibull: held-out errors unresolved by paired resampling or both <0.1 pp."
+      ]
+    }
+  ],
+  "source": {
+    "title": "Ketoprofen F15, published kinetics table",
+    "citation": "Ghosh DP, Mittal A, Gaur A, Sahoo J. Int J Pharm Sci Res. 2020;11(6):2906-2913. DOI: 10.13040/IJPSR.0975-8232.11(6).2906-13",
+    "source_url": "https://ijpsr.com/bft-article/formulation-and-evaluation-of-a-ph-dependent-multi-particulate-colon-targeted-drug-delivery-system-using-powder-layering-technology-of-ketoprofen/?view=fulltext",
+    "locator": "Second table labelled TABLE 4, heading ZERO ORDER, FIRST ORDER, HIGUCHI AND KORSMEYER-PEPPAS RELEASE KINETICS DATA, Time (h) and Q% Drug Release columns only",
+    "time_unit": "h",
+    "extraction": "Manual transcription of HTML table, percentages divided by 100. No graph digitization. Retrieved 2026-11-05.",
+    "error_halfwidth_fraction": 5e-05,
+    "error_description": "Digitization error: none introduced because values are tabulated. Rounding allowance: +/-0.005 percentage points (half of the displayed 0.01 percentage-point step). This is an assumed rounding bound, not a measured experimental error. Exact listed sampling times used; time error not quantified.",
+    "license": "Source data: CC BY-NC-SA 3.0, https://creativecommons.org/licenses/by-nc-sa/3.0/. Derived data and reports retain this license. Code has a separate MIT license.",
+    "notes": [
+      "Source discrepancy: kinetics table gives 16.32% at 4 h, while the comparative F15 table gives 14.32%. Values here follow the kinetics table without silently reconciling them.",
+      "Medium pH changes during the experiment. The prose and comparative table also differ on timings. Single-regime fits describe this selected table only; they cannot establish a release mechanism.",
+      "No raw replicate curves or experimental uncertainty available in the selected table. Rounded cumulative points are not independent replicates."
+    ]
+  },
+  "input_sha256": {
+    "ketoprofen_f15.csv": "add1b97491876d3471c2427dfa113f8f0a017a537219bfad72c00530e5ba9dd4",
+    "ketoprofen_f15.json": "be83400fead91f38b9abbe133126434ecc372c955d89f6dc6fe5cb3b369a10d2"
+  }
+}
