@@ -1,18 +1,24 @@
-# Drug release curve fitting
+I merged this into my existing [lab-assay-lims project](https://github.com/jackaI1/lab-assay-lims/tree/main/projects/drug-release-kinetics-fit). The current code is in `projects/drug-release-kinetics-fit/` there. I kept the code here so older links still work.
 
-I built a tool for comparing drug release curves because I wanted to know whether a model really explained the data, or just drew a convincing line through it.
+The move keeps the original layout, including `tests/test_analysis.py`, `tests/test_cli.py`, `scripts/summary.py`, `src/drug_release/analysis.py`. I replaced the README with the report below and left out Git history, installed dependencies, caches and generated build output from the hub copy.
 
-I give it a table of time and the fraction of drug released. It fits zero-order, first-order, Higuchi, Korsmeyer-Peppas and Weibull curves, checks predictions against points left out of fitting, and shows how uncertain the fitted parameters are. It warns when a model is outside its useful range or when the points cannot distinguish two models.
+The 2 test source files moved with the code. No project-specific GitHub Actions workflow was retained; the report records the omitted checks, and the test sources can be run locally from the linked folder.
 
-**[Read the saved example report](reports/ketoprofen/report.md)** without installing anything. It includes plots and the limitations of the source data. For an offline copy, download [report.html](reports/ketoprofen/report.html) and open it in a browser; the plots are embedded.
+Other specific omissions: reports/ (generated output).
+
+Omitted workflows: `drug-release-kinetics-fit-ci.yml`: The relocated workflow did not complete successfully within the migration batch. Local test sources remain available.
+
+---
+
+# drug-release-kinetics-fit
+
+I built a tool for comparing drug release curves to learn how the underlying idea works. This is a learning project.
 
 ## Try it
 
 I use Python with [uv](https://docs.astral.sh/uv/getting-started/installation/) to install the locked dependencies:
 
 ```bash
-git clone https://github.com/jackaI1/drug-release-kinetics-fit.git
-cd drug-release-kinetics-fit
 uv sync --frozen --extra dev
 uv run release-fit data/ketoprofen_f15.csv \
   --metadata data/ketoprofen_f15.json \
@@ -60,15 +66,14 @@ Bootstrap confidence intervals come from repeatedly resampling fitted residuals,
 
 Higuchi's assumptions about diffusion and the surrounding medium need independent evidence. Predictions beyond complete release, shape parameters at numerical bounds, too few early points and inappropriate baselines are flagged or rejected. None of these fits establishes a physical mechanism or predicts patient outcomes. I explain the formulas, thresholds and limitations in [docs/methods.md](docs/methods.md).
 
-## Code and checks
+## Tests and limits
 
-The package separates model equations, comparison and resampling, input provenance, and report generation under `src/drug_release/`. It runs offline after installation. I check known synthetic parameters independently for every model, noisy parameter recovery, the range restriction, held-out calculations, information criteria, bootstrap reproducibility and the command-line workflow.
+There are 2 test source files in this copy. That source count does not establish an execution result. This is a source snapshot, and running it on a new machine may need environment-specific setup.
 
-```bash
-uv run pytest -q
-uv run ruff check src tests scripts
-uv run ruff format --check src tests scripts
-uv build
-```
 
-[CI](https://github.com/jackaI1/drug-release-kinetics-fit/actions) runs these checks on the supported Python versions and regenerates the example as a downloadable artifact. The dependency lockfile makes the setup repeatable.
+
+Generated output omitted from this copy: reports/ (generated output). Regenerate it with the project scripts.
+
+The relocated workflow did not complete successfully within the migration batch. Local test sources remain available.
+
+No project-specific GitHub Actions workflow was retained. The local test sources remain in this folder.
